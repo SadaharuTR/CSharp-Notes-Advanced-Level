@@ -1,0 +1,11 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\bin\Debug\DelegateExamples.exe.config
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\bin\Debug\DelegateExamples.exe
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\bin\Debug\DelegateExamples.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\obj\Debug\DelegateExamples.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\obj\Debug\DelegateExamples.csproj.SuggestedBindingRedirects.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\obj\Debug\DelegateExamples.Form1.resources
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\obj\Debug\DelegateExamples.Properties.Resources.resources
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\obj\Debug\DelegateExamples.csproj.GenerateResource.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\obj\Debug\DelegateExamples.csproj.CoreCompileInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\obj\Debug\DelegateExamples.exe
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\DelegateExamples\obj\Debug\DelegateExamples.pdb

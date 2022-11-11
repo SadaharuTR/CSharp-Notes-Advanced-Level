@@ -1,0 +1,15 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\bin\Debug\net6.0\RefOutParamsArguments.exe
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\bin\Debug\net6.0\RefOutParamsArguments.deps.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\bin\Debug\net6.0\RefOutParamsArguments.runtimeconfig.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\bin\Debug\net6.0\RefOutParamsArguments.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\bin\Debug\net6.0\RefOutParamsArguments.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\obj\Debug\net6.0\RefOutParamsArguments.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\obj\Debug\net6.0\RefOutParamsArguments.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\obj\Debug\net6.0\RefOutParamsArguments.AssemblyInfoInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\obj\Debug\net6.0\RefOutParamsArguments.AssemblyInfo.cs
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\obj\Debug\net6.0\RefOutParamsArguments.csproj.CoreCompileInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\obj\Debug\net6.0\RefOutParamsArguments.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\obj\Debug\net6.0\refint\RefOutParamsArguments.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\obj\Debug\net6.0\RefOutParamsArguments.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\obj\Debug\net6.0\RefOutParamsArguments.genruntimeconfig.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\RefOutParamsArguments\obj\Debug\net6.0\ref\RefOutParamsArguments.dll

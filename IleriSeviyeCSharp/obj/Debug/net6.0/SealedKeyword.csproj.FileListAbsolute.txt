@@ -1,0 +1,5 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IleriSeviyeCSharp\obj\Debug\net6.0\SealedKeyword.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IleriSeviyeCSharp\obj\Debug\net6.0\SealedKeyword.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IleriSeviyeCSharp\obj\Debug\net6.0\SealedKeyword.AssemblyInfoInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IleriSeviyeCSharp\obj\Debug\net6.0\SealedKeyword.AssemblyInfo.cs
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IleriSeviyeCSharp\obj\Debug\net6.0\SealedKeyword.csproj.CoreCompileInputs.cache

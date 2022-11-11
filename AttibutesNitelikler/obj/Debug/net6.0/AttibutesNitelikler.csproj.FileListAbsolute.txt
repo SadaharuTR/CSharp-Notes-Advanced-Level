@@ -1,0 +1,15 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\bin\Debug\net6.0\AttibutesNitelikler.exe
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\bin\Debug\net6.0\AttibutesNitelikler.deps.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\bin\Debug\net6.0\AttibutesNitelikler.runtimeconfig.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\bin\Debug\net6.0\AttibutesNitelikler.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\bin\Debug\net6.0\AttibutesNitelikler.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\obj\Debug\net6.0\AttibutesNitelikler.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\obj\Debug\net6.0\AttibutesNitelikler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\obj\Debug\net6.0\AttibutesNitelikler.AssemblyInfoInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\obj\Debug\net6.0\AttibutesNitelikler.AssemblyInfo.cs
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\obj\Debug\net6.0\AttibutesNitelikler.csproj.CoreCompileInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\obj\Debug\net6.0\AttibutesNitelikler.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\obj\Debug\net6.0\refint\AttibutesNitelikler.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\obj\Debug\net6.0\AttibutesNitelikler.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\obj\Debug\net6.0\AttibutesNitelikler.genruntimeconfig.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\AttibutesNitelikler\obj\Debug\net6.0\ref\AttibutesNitelikler.dll

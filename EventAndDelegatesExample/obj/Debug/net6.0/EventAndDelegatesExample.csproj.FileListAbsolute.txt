@@ -1,0 +1,15 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\bin\Debug\net6.0\EventAndDelegatesExample.exe
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\bin\Debug\net6.0\EventAndDelegatesExample.deps.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\bin\Debug\net6.0\EventAndDelegatesExample.runtimeconfig.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\bin\Debug\net6.0\EventAndDelegatesExample.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\bin\Debug\net6.0\EventAndDelegatesExample.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\obj\Debug\net6.0\EventAndDelegatesExample.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\obj\Debug\net6.0\EventAndDelegatesExample.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\obj\Debug\net6.0\EventAndDelegatesExample.AssemblyInfoInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\obj\Debug\net6.0\EventAndDelegatesExample.AssemblyInfo.cs
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\obj\Debug\net6.0\EventAndDelegatesExample.csproj.CoreCompileInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\obj\Debug\net6.0\EventAndDelegatesExample.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\obj\Debug\net6.0\refint\EventAndDelegatesExample.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\obj\Debug\net6.0\EventAndDelegatesExample.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\obj\Debug\net6.0\EventAndDelegatesExample.genruntimeconfig.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\EventAndDelegatesExample\obj\Debug\net6.0\ref\EventAndDelegatesExample.dll

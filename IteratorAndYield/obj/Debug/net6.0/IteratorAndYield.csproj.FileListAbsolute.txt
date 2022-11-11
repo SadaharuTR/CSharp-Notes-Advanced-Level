@@ -1,0 +1,15 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\bin\Debug\net6.0\IteratorAndYield.exe
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\bin\Debug\net6.0\IteratorAndYield.deps.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\bin\Debug\net6.0\IteratorAndYield.runtimeconfig.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\bin\Debug\net6.0\IteratorAndYield.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\bin\Debug\net6.0\IteratorAndYield.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\obj\Debug\net6.0\IteratorAndYield.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\obj\Debug\net6.0\IteratorAndYield.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\obj\Debug\net6.0\IteratorAndYield.AssemblyInfoInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\obj\Debug\net6.0\IteratorAndYield.AssemblyInfo.cs
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\obj\Debug\net6.0\IteratorAndYield.csproj.CoreCompileInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\obj\Debug\net6.0\IteratorAndYield.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\obj\Debug\net6.0\refint\IteratorAndYield.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\obj\Debug\net6.0\IteratorAndYield.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\obj\Debug\net6.0\IteratorAndYield.genruntimeconfig.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IteratorAndYield\obj\Debug\net6.0\ref\IteratorAndYield.dll

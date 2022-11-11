@@ -1,0 +1,15 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\bin\Debug\net6.0\ConstKeyword.exe
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\bin\Debug\net6.0\ConstKeyword.deps.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\bin\Debug\net6.0\ConstKeyword.runtimeconfig.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\bin\Debug\net6.0\ConstKeyword.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\bin\Debug\net6.0\ConstKeyword.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\obj\Debug\net6.0\ConstKeyword.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\obj\Debug\net6.0\ConstKeyword.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\obj\Debug\net6.0\ConstKeyword.AssemblyInfoInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\obj\Debug\net6.0\ConstKeyword.AssemblyInfo.cs
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\obj\Debug\net6.0\ConstKeyword.csproj.CoreCompileInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\obj\Debug\net6.0\ConstKeyword.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\obj\Debug\net6.0\refint\ConstKeyword.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\obj\Debug\net6.0\ConstKeyword.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\obj\Debug\net6.0\ConstKeyword.genruntimeconfig.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ConstKeyword\obj\Debug\net6.0\ref\ConstKeyword.dll

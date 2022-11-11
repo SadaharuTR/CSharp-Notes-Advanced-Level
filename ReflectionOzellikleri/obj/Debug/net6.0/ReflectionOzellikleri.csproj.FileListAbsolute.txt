@@ -1,0 +1,15 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\bin\Debug\net6.0\ReflectionOzellikleri.exe
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\bin\Debug\net6.0\ReflectionOzellikleri.deps.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\bin\Debug\net6.0\ReflectionOzellikleri.runtimeconfig.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\bin\Debug\net6.0\ReflectionOzellikleri.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\bin\Debug\net6.0\ReflectionOzellikleri.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\obj\Debug\net6.0\ReflectionOzellikleri.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\obj\Debug\net6.0\ReflectionOzellikleri.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\obj\Debug\net6.0\ReflectionOzellikleri.AssemblyInfoInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\obj\Debug\net6.0\ReflectionOzellikleri.AssemblyInfo.cs
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\obj\Debug\net6.0\ReflectionOzellikleri.csproj.CoreCompileInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\obj\Debug\net6.0\ReflectionOzellikleri.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\obj\Debug\net6.0\refint\ReflectionOzellikleri.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\obj\Debug\net6.0\ReflectionOzellikleri.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\obj\Debug\net6.0\ReflectionOzellikleri.genruntimeconfig.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionOzellikleri\obj\Debug\net6.0\ref\ReflectionOzellikleri.dll

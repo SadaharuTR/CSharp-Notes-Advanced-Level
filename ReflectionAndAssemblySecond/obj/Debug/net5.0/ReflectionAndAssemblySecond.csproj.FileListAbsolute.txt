@@ -1,0 +1,5 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionAndAssemblySecond\obj\Debug\net5.0\ReflectionAndAssemblySecond.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionAndAssemblySecond\obj\Debug\net5.0\ReflectionAndAssemblySecond.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionAndAssemblySecond\obj\Debug\net5.0\ReflectionAndAssemblySecond.AssemblyInfoInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionAndAssemblySecond\obj\Debug\net5.0\ReflectionAndAssemblySecond.AssemblyInfo.cs
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReflectionAndAssemblySecond\obj\Debug\net5.0\ReflectionAndAssemblySecond.csproj.CoreCompileInputs.cache

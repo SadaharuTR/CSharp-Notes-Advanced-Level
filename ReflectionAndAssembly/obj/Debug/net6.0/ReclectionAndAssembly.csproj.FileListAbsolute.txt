@@ -1,0 +1,15 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\obj\Debug\net6.0\ReclectionAndAssembly.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\obj\Debug\net6.0\ReclectionAndAssembly.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\obj\Debug\net6.0\ReclectionAndAssembly.AssemblyInfoInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\obj\Debug\net6.0\ReclectionAndAssembly.AssemblyInfo.cs
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\obj\Debug\net6.0\ReclectionAndAssembly.csproj.CoreCompileInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\bin\Debug\net6.0\ReclectionAndAssembly.exe
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\bin\Debug\net6.0\ReclectionAndAssembly.deps.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\bin\Debug\net6.0\ReclectionAndAssembly.runtimeconfig.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\bin\Debug\net6.0\ReclectionAndAssembly.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\bin\Debug\net6.0\ReclectionAndAssembly.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\obj\Debug\net6.0\ReclectionAndAssembly.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\obj\Debug\net6.0\refint\ReclectionAndAssembly.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\obj\Debug\net6.0\ReclectionAndAssembly.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\obj\Debug\net6.0\ReclectionAndAssembly.genruntimeconfig.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\ReclectionAndAssembly\obj\Debug\net6.0\ref\ReclectionAndAssembly.dll

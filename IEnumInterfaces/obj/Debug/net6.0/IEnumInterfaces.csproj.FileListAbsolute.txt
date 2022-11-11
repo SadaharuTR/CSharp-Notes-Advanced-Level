@@ -1,0 +1,15 @@
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\obj\Debug\net6.0\IEnumInterfaces.csproj.AssemblyReference.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\obj\Debug\net6.0\IEnumInterfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\obj\Debug\net6.0\IEnumInterfaces.AssemblyInfoInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\obj\Debug\net6.0\IEnumInterfaces.AssemblyInfo.cs
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\obj\Debug\net6.0\IEnumInterfaces.csproj.CoreCompileInputs.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\bin\Debug\net6.0\IEnumInterfaces.exe
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\bin\Debug\net6.0\IEnumInterfaces.deps.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\bin\Debug\net6.0\IEnumInterfaces.runtimeconfig.json
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\bin\Debug\net6.0\IEnumInterfaces.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\bin\Debug\net6.0\IEnumInterfaces.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\obj\Debug\net6.0\IEnumInterfaces.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\obj\Debug\net6.0\refint\IEnumInterfaces.dll
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\obj\Debug\net6.0\IEnumInterfaces.pdb
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\obj\Debug\net6.0\IEnumInterfaces.genruntimeconfig.cache
+C:\Users\acdem\OneDrive\Masaüstü\İleri Seviye C#\IEnumInterfaces\obj\Debug\net6.0\ref\IEnumInterfaces.dll
