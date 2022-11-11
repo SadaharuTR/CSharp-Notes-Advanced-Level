@@ -1,0 +1,481 @@
+IENumerable ve IEnumerator Interface
+
+- IENumerable interface'i bir class'ı itere edilebilir hale getirir.
+- Kullanabilmek için using System.Collections; koda dahil edilmelidir.
+
+using System.Collections;
+
+namespace IEnumInterfaces
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrayList array = new ArrayList(); //burada ArrayList'imiz de bir class'tır.
+
+            //CTRL'e basılı tutup ArrayList'e tıkladığımızda class içeriğini ve orada IEnumerable interface'ini görebiliriz.
+            //public class ArrayList : ICollection, IEnumerable, IList, ICloneable {....}
+			//ArrayList IEnumerable'dan türemiştir, kalıtım almıştır.
+
+            array.Add(1);
+            array.Add(2);   
+            array.Add("Hello");
+
+            foreach (var item in ArrayList)
+            {
+                Console.WriteLine(item); //ile bütün elemanlarını ekranda yazdırabiliriz.
+            }
+        }
+    }
+}
+
+Daha da geniletirsek;
+
+namespace IEnumInterfaces
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            MyList list = new MyList();
+
+            list.Add(15);
+            list.Add("Merhaba");
+            list.Add(12.5);
+
+            Console.WriteLine(list[2]);//çalıştırdığımızda ekrana 0-1-2 yani 12.5'u yazdıracaktır.
+
+            foreach (var item in list) //burada hatamızı aldık. Çünkü MyList itere edilebilir bir class değil.
+            {   
+               Console.WriteLine(item);
+			}
+            //bu hatayı IENumerable interface'i sayesinde kaldıracağız.
+        }
+    }
+}
+
+class MyList
+{
+    ArrayList array;
+    public MyList()
+    {
+        array = new ArrayList();
+    }
+
+    public object this[int index] //indexer içerisinde array'in get ile index no'sunu alıyoruz, set ile de aldığımız değeri array[index]'e atıyoruz.
+    {
+        get { return array[index]; }
+        set { array[index] = value; }
+    }
+    public void Add(object value)
+    {
+        array.Add(value);
+    }
+    public void Clear(object value)
+    {
+        array.Clear();
+    }
+}
+
+MyList'i itere edilebilir bir özelliğe kavuşturmak için;
+
+using System.Collections;
+
+namespace IEnumInterfaces
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            MyList list = new MyList();
+
+            list.Add(15);
+            list.Add("Merhaba");
+            list.Add(12.5);
+
+            Console.WriteLine(list[2]);//çalıştırdığımızda ekrana 0-1-2 yani 12.5'u yazdıracaktır.
+
+            foreach (var item in list) //MyClass : IEnumerable dediğimiz anda hata ortadan kalkacaktır.
+            {   }
+            
+        }
+    }
+}
+
+class MyList : IEnumerable
+{
+    ...kodun bu kısım aynı..
+
+    public IEnumerator GetEnumerator() //IENumerable yazdığımızdaki hatayı gidermek için ampule tıklayıp implement interface dememiz yeterli.
+    {
+        return array.GetEnumerator();
+    }
+}
+
+- Peki imlepement ettiğimiz IEnumerator tipini döndüren GetEnumerator metodu?
+
+Bir sınıfa iterasyon özelliklerini kazandırmak için gereken tüm özellikler IEnumerator interface’i aracılığıyla elde edilebilmektedir.
+GetEnumerator metodu foreach bir koleksiyonu çağırdığında devreye girer. 
+
+GetEnumerator kullanmadan da aynı işlemi yapabiliriz.
+
+class MyList : IEnumerable
+{
+    ...kodun bu kısım aynı..
+
+    public IEnumerator GetEnumerator() //IENumerable yazdığımızdaki hatayı gidermek için ampule tıklayıp implement interface dememiz yeterli.
+    {
+        for (int i = 0; i < array.Count; i++)
+        {
+            yield return array[i]; //ileride detaylı yield kullanımı.			
+        }
+    }
+}
+
+For döngüsü ile de aynı çıktıyı elde edebiliriz. Fakat ilk seçenek daha verimlidir.
+
+- class MyList : IEnumerable 'da interface'i yazmadan sadece GetEnumerator()'u kullansak hata almayız. Çünkü foreach GetEnumerator() metodunu
+çağırmaktadır. IENumerable ise yazım hatalarını gidermek için kullanılır. Çünkü bildiğimiz üzere bir interface'i kullanma amacımız onun içerisindeki
+üyeleri imlepement etme zorunluluğuydu. class MyList : IEnumerable yazarak bir sorumluluk katıyoruz. ve GetEnumerator'un bulunmasını zorunlu kılıyoruz.
+
+Not: GetEnumerator metodu, bir sınıfa iterasyon yapılarını kazandıracak özellikleri barındıran IEnumerator nesnesi dönen bir metotdur.
+
+----------------
+
+IEnumerator Interface
+
+-IEnumerable interface’i ile bir sınıf itere edilebilir hale getiriliyor, bu işlem içinde GetEnumerator metodu sınıfa implement ediliyordu. 
+IEnumerator interface’i ise iterasyon özelliği kazandıracak ve iterasyon işleminde kullanılacak elemanları ve özellikleri barındırmaktadır.
+
+Bu elemanlar/özellikler;
+
+Current 	:İterasyon’da kalınan yeri temsil eder.
+MoveNext 	:İterasyon’da bir sonraki adım var mı?/yok mu? kontrolünü sağlar.
+Reset	 	:İterasyon’u başa alır.
+Dispose		:İterasyon’un bittiğini temsil eder.
+
+Örnek:
+
+using System.Collections;
+
+namespace IEnumInterfaces
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            MyList list = new MyList();
+
+            list.Add(15);
+            list.Add("Merhaba");
+            list.Add(12.5);
+
+            foreach (var item in list) 
+            {
+                Console.WriteLine(item);
+            }
+            
+        }
+    }
+}
+
+class MyEnumerator : IEnumerator //ampule tıklayıp üyelerini implement edelim.
+{
+    //Burada IEnumerator ile iterasyonun nasıl olacağını belirtiriz. 
+
+    ArrayList array;
+    int index = -1;
+
+    public MyEnumerator(ArrayList array)
+    {
+        this.array = array;
+    }
+
+    public object Current => array[index];
+
+    public bool MoveNext()
+    {
+        index += 2; //index'imiz 2'şe artsın. -1 + 2 = 1. index o da yuakrıda Merhaba'ya denk gelir. Ondan sonra 2 arttırıp 3'e gelip çıkacaktır.
+        //çünkü array'de o kadar eleman yok.
+        return index < array.Count;
+        //return ++index < array.Count; default olarak bu şekilde.
+    }
+
+    public void Reset()
+    {
+        index = -1;
+    }
+}
+class MyList : IEnumerable
+{
+    ArrayList array;
+    public MyList()
+    {
+        array = new ArrayList();
+    }
+
+    public object this[int index] 
+    {
+        get { return array[index]; }
+        set { array[index] = value; }
+    }
+    public void Add(object value)
+    {
+        array.Add(value);
+    }
+    public void Clear(object value)
+    {
+        array.Clear();
+    }
+    public IEnumerator GetEnumerator() 
+    {
+        return new MyEnumerator(array); //kendi oluşturduğumuz metodumuzu çalıştıralım.
+    }
+}
+
+İle kendimiz oluşturup akışını kendimizin kontrol ettiği bir IEnumerator olan MyEnumerator'la da işlemlerimizi yapabiliriz.
+
+Not:  public object Current => array[index]; ifadesi //lambda expression
+
+public object Current { get { return array[index]; } ile aynıdır.
+
+
+-----------------------
+
+Iteration and Yield Keyword
+
+- Iteratorlar, array veya koleksiyonlar üzerinde yield keyword’ü kullanılarak içerlerindeki elemanlar üzerinde özel iterasyonlar yapmamızı sağlayan yapılardır. 
+Iterator’lar bir metot olarak geliştirilebileceği gibi aynı zamanda bir property’nin get erişimcisi olarak ya da bir operator olarak ta geliştirilebilmektedir.
+
+- İteratorlar foreach döngüleri tarafından kullanılırlar ve işlem yaptıkları kolleksiyonlar veya arrayler içerisindeki elemanları foreach döngüsüne iletirler.
+
+- Bir iterator yaratmak için öncelikli olarak bilmemiz gereken iteratorların dönüş tiplerinin IEnumerable, IEnumerator, IEnumerable<T> veya IEnumerator<T> 
+interfacelerinden biri olması gerektiğidir.
+
+Yield Keyword’ü Nedir? 
+
+Yield keyword’ünün kullanımını incelediğimizde iki farklı kullanım şeklinin olduğunu görmekteyiz.
+
+1- yield return <ifade>
+2- yield break
+
+- Yield return ifadesi ile iterator’a çağrı yapılan foreach döngüsüne bir eleman döndürülürken,
+- yield break ifadesi ile de artık bulunan iterator içerisindeki iterasyonun sona erdiği bilgisi iterator’ı çağıran foreach döngüsüne iletilmekte. 
+
+Örnek: Alt ve üst sınırları verilen bir sayı kümesindeki çift sayıları bulan ve bunları bir collection olarak dönen bir metot.
+
+namespace IteratorAndYield
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {          
+            foreach (var item in Ciftsayi(5, 20))
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        public static IEnumerable<int> Ciftsayi(int altSinir, int ustSınır)
+        {
+            List<int> result = new List<int>();
+
+            for (int i = altSinir; i <= ustSınır; i++)
+            {
+                if (i % 2 == 0)
+                    result.Add(i);
+            }
+            return result;
+        }
+    }
+}
+
+Return olacak collection’ı tanımlamak zorunda kalacak ve “List<int>” gibi bir collection’a ihtiyaç duyacaktınız.
+Peki fazladan bir collection kullanmak yerine yield keyword’ünü kullansak nasıl olur ?
+
+using System.Collections;
+
+namespace IteratorAndYield
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            foreach (var item in Ciftsayi(5, 20))
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        public static IEnumerable<int> Ciftsayi (int altSinir, int ustSınır)
+        {
+            for (int i = altSinir; i <= ustSınır; i++)
+            {
+                if (i%2==0)
+                    yield return i;
+            }
+        }
+    }
+}
+
+- yield break ifadesine değinelim.Bu ifade ile compiler’a iterasyonu sona erdirmesini söyleyebilirsiniz.
+Genel olarak bu ifadeyi belirli koşullar oluştuğunda iterasyonu sona erdirmek için kullanmak mantıklı olacaktır.Örneğin;
+
+using System.Collections.Generic;
+
+class Program { 
+
+using System.Collections.Generic;
+
+class Program {
+
+    static IEnumerable<string> Days()
+    {
+        yield return "Monday";
+        yield return "Tuesday";
+        yield return "Wednesday";
+        yield return "Thursday";
+        yield return "Friday";
+        yield return "Saturday";
+        yield break;
+        yield return "Sunday";
+    }
+
+    static void Main(string[] args)
+    {
+        foreach (var day in Days())
+            Console.WriteLine(day);
+    }
+}
+
+“Days” metodu günleri bir collection halinde döndürür.Compiler “yield break” ifadesini gördüğün andan itibaren iterasyona ve metoda son verir.
+”yield break” ifadesinin altına yazacağınız hiç bir kod compiler tarafından okunmaz.
+
+-------------------------------
+
+Ref, Out ve Params Kavramları
+
+Metotlara Farklı Parametre Aktarma Teknikleri
+
+-Referans Yolu ile Parametre Aktarma
+	-Ref
+	-Out
+
+-Params özelliği.
+
+Referans Yolu ile Parametre Aktarma:
+
+Ref Kullanımı:
+
+- Bir metot bir sonuç döndürür veya void metot ise değer döndürmez.
+- Void bir metottan değer ve değerler almak için veya bir fonksiyon içinden birden fazla değer almak için;
+
+1-Global değişkenler tanımlanır.
+2-Parametre yolu ile veri alınabilir
+
+Örnek:
+
+namespace RefOutParamsArguments
+{
+    class Program
+    {
+        //ref keyword'ü değer tipinden önce kullanılmalıdır.
+
+        static void kareAl(ref double d) //bu değişken üzerinden global yapmadan da main'e değer gönderebiliriz.
+        {
+            d = d * d;
+        }
+        static void Main(string[] args)
+        {
+            double i = 3.45;
+            kareAl(ref i); //ref i -> ref double d , yani ref'in yanındaki değişkenin adresine atanır.
+            Console.WriteLine(i);
+        }
+    }
+}
+
+- Metot çağırımının da ref anahtar sözcüğü ile yapılması şarttır.
+- ref içeren metodu çağırmadan önce ref olarak aktarılan argüman mutlaka bir atanmış olmalıdır.
+
+Out Kullanımı:
+
+- Kullanımı ref ile çok benzerdir. Tek fark out keyword'ü kullanılacak değişkene ilk değer atamak zorunda olunmamasıdır.
+- Out keyword’ü bir metottan birden fazla geri dönüş bekleniyorsa kullanılır.
+
+Örnek:
+
+namespace RefOutParamsArguments
+{
+    class Program
+    {
+        static int Max(int x, int y, out bool b) //max ile küçük büyük değeri return ediyoruz ama bool değeri de görmek istiyorsak;
+        {
+            if (x > y)
+            {
+                b = true; 
+            }
+            else
+                b = false;
+
+            return Math.Max(x, y);
+        }
+        static void Main(string[] args)
+        {
+            bool a;
+            int max = Max(9 ,22, out a); //out a dediğimiz anda b'nin içindeki değeri a'ya aktarmış oluruz.
+            Console.WriteLine("Büyük sayı: " + max.ToString() + "\nBool değer: " + a);
+        }
+    }
+}
+
+Çıktı:
+Büyük sayı: 22
+Bool değer: False
+
+- Hem iki sayıdan büyüğünü geri döndürdük, ve bool ile sayılardan hangisinin büyük olduğunun kararını verdik.
+
+----------------
+
+Params Keyword:
+
+- Birden fazla parametrenin alınmasına olanak sağlar.
+- Params'lar derleyici tarafından diziye dönüştürülürler.
+
+Örnek:
+
+namespace RefOutParamsArguments
+{
+    class Program
+    {      
+        static void Main(string[] args)
+        {
+            int sum1, sum2, sum3, sum4;
+
+            //farklı toplama işlemleri, parametre sayılarına dikkat edelim.
+            Console.WriteLine(sum1 = SumParameters(1));
+			//Console.WriteLine(sum1 = SumParameters(new int[] { 1 })); params kullanmadan yapınca.
+            Console.WriteLine(sum2 = SumParameters(1,2));
+            Console.WriteLine(sum3 = SumParameters(3,3,3));
+            Console.WriteLine(sum4 = SumParameters(4,4,4,4));
+
+        }
+        static int SumParameters(params int[] values)
+        {
+            //toplama işlemi
+            int total = 0;
+            foreach (var value in values)
+            {
+                total += value;
+            }
+            return total;
+        }
+    }
+}
+
+Çıktı:
+1
+3
+9
+16
+
+

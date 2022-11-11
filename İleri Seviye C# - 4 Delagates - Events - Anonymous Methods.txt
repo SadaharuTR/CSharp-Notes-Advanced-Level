@@ -1,0 +1,350 @@
+Temsilci(delegate) nedir?
+
+- Metotlar için imza tarif eden bir veri tipidir.
+
+- C# delegate yapısı C ve C++ dillerinde yer alan function pointer veya fonksiyon göstericilerine benzemektedir.
+
+- Temsilciler sayesinde, metotlara başka bir metodu parametre olarak gönderebilir, bir metodu bir değşikene değer olarak atayabilir,
+birden fazla metodu tek komutla çalıştırabilir ve Callback, EventHandler, LINQ ifadelerinde kullanabiliriz.
+
+NOT : Metodlar da bellekte oluşan ve bellek adresleri olan yapılardır.
+Delegeler referans tipli yapılardır.Yani nesne oluşturulabilirler.
+
+[Erişim Belirleyicisi] delege [geri dönüş tipi] [delege ismi] (eğer varsa parametre)
+
+public delegate void MyDelegeHandler();
+//Geri dönüş tipi olmayan ve parametre almayan metodlar için kullanılır.
+
+- Delege'lerin temsil edeceği metoda imzası benzemek zorundadır.
+
+- Delege isimlerinin sonuna Handler konmak yazılım geleneğinin adetlerindendir.
+
+public delegate void MyDelegeHandler2(int a,int b);
+//Geri dönüş tipi olmayan ve int tipinden iki adet parametre alan metodlar için kullanılır.
+----
+public delegate int MyDelegeHandler3(int a,int b);
+//Geri dönüş tipi int olan ve int tipinden iki adet parametre alan metodlar için kullanılır.
+----
+public delegate string MyDelegeHandler4();
+//Geri dönüş tipi string olan ve parametre almayan metodlar için kullanılır.
+
+Delegate Kullanımı:
+
+public delegate void CalismaHandler(); //geri değer döndürmeyen ve parametre almayan delegate
+public void x() //geri değer döndürmeyen ve parametre almayan metot
+{
+    MessageBox.Show("x metodu");
+}
+
+- Bu metodu istersek şu şekilde çalıştırabiliriz;
+
+private void Form1_Load(object sender, EventArgs e)
+{
+    x();
+}
+
+- x metodunu CalismaHandler delegate'i tarafından çaıştırmak istersek,önce Delegate dediğimiz yapı bir referans tipli yapı olduğundan referansını 
+tanımlamalıyız. Ve bu referansı tanımladıktan sonra o delegeden bir nesne yaratıp istediğimiz metodu çalıştırmasını sağlayabiliriz.
+
+private void Form1_Load(object sender, EventArgs e)
+{
+    CalismaHandler delege = new CalismaHandler(x);
+	//Yukarıda oluşturduğumuz delegeden nesne yaratıyorum.
+}
+
+- Yukarıda “delege” isimli delege nesnesine , x metodunu çalıştır demiş olduk. 
+
+private void Form1_Load(object sender, EventArgs e)
+{
+    CalismaHandler delege = new CalismaHandler(x);
+    delege();//delege isimli delegate nesnesi üzerinden x referansını çalıştırmış olduk.
+}
+
+- Yukarıda Windows Form'un load'ında yazılan bu kod derlenip çalıştırıldığında mesaj kutusunda “x metodu” yazacaktır.
+
+- Invoke() kullanarakta aynı çalışmayı yapabilirdik.
+
+private void Form1_Load(object sender, EventArgs e)
+{
+    CalismaHandler delege = new CalismaHandler(x);
+    delege.Invoke();//delegenin işaret ettiği metod, delegenin Invoke metodu aracılığıyla da çalıştırılabilir.
+}
+
+Örnek:
+
+public delegate int IslemYapHandler(int a,int b); //geriye int tipinden değer gönderen ve int tipinden iki parametre alan bir delege
+public int Topla(int s1, int s2)
+{
+    return s1 + s2;
+}
+//geriye int tipinden değer gönderen ve int tipinden iki parametre alan iki metod
+public int Carp(int s1, int s2)
+{
+    return s1 * s2;
+}
+
+private void Form1_Load(object sender, EventArgs e)
+{
+    IslemYapHandler delege = new IslemYapHandler(Topla); //yazdığımız bu metodları “delege” isminde delegate nesnesine adreslettirdik.
+    MessageBox.Show(delege(2, 3).ToString()); //delege(2,3) veya
+    MessageBox.Show(delege.Invoke(2, 3).ToString()); //delege.Invoke(2,3) diyerek, programı derleyip çalıştırdığımızda ekranda 5 yazısını göreceğiz.
+}
+
+NOT:”delege” isimli delegate nesnesi hem Topla hem de Carp metodlarını adresleyebilir.Biz yukarıda sadece Topla metodunu adreslettik. 
+
+- Carp metodunuda “delege” isimli delegatemize adresletmek için;
+	
+delege += Carp;
+
+-“delege” isimli delegate'e Topla metodu verilmişti. Şimdi aynı delegate'e Carp metodu da adreslettiriliyor.
+
+-Yani bir delege aynı anda birden fazla metodu adresleyebilir. Gördüğünüz gibi bunu ” += ” operatörüyle yapıyor.” += ” operatörü ile metod eklenirken, 
+” -= ” operatörüyle metod çıkartılabilir.
+
+private void Form1_Load(object sender, EventArgs e)
+{
+	IslemYapHandler delege = new IslemYapHandler(Topla);
+	delege += Carp;
+	MessageBox.Show(delege(2,3).ToString());
+	//ya da
+	MessageBox.Show(delege.Invoke(2,3).ToString());
+}
+
+- Burada kod istenildiği gibi çalışmayacaktır. Yani önce Topla metodu çalışıp 5 sonucunu, sonra Carp metodu çalıştırılıp 6 cevabı verilmeyecektir.
+Bunun sebebi delege'ye bağlanan en son metodun çalışmasıdır. Yani en son bağlanan Carp metodu çalışır.
+
+private void Form1_Load(object sender, EventArgs e)
+{
+	IslemYapHandler delege = new IslemYapHandler(Topla); //delegemize önce Topla metodu ekleniyor,
+	delege += Carp; //sonra Carp metodu ekleniyor,
+	delege -= Carp; //daha sonra Capr metodu çıkarılıyor.
+	MessageBox.Show(delege(2,3).ToString()); //yani burada topla metodu çalışacaktır.
+}
+
+- Delegemiz içindeki tüm metodlarımız da sırasıyla gezebilmek için,delegate referansımız üzerinden GetInvocationList() metodunu kullanıyoruz.
+
+private void Form1_Load(object sender, EventArgs e)
+{
+    IslemYapHandler delege = new IslemYapHandler(Topla);
+    delege += Carp; //artık delegemizin içerisinde Topla ve Carp metotları var.
+    Delegate[] metodlarımız = delege.GetInvocationList(); //delege referansıyla GetInvocationList() metodunu çalıştırdığımızda geriye Delegate[] dizisi 
+	//tipinden veriler dönüyor ve bunları Delegate[] metodlarımız dizisine alıyoruz.
+    foreach (Delegate item in metodlarımız) //ile diziyi dolaşıyoruz.
+    {
+        MessageBox.Show("Metodumuzun adı : " + item.Method.Name); //dizideki metotların isimlerine,
+        MessageBox.Show("Metodumuzun geri dönüş tipi : "+item.Method.ReturnType); //özelliklerine (adı, geri dönüş değeri vs.) bakabiliyoruz.
+        int sonuc = (int)item.DynamicInvoke(2, 3);//DynamicInvoke metodu sayesinde o an da item referansına gelen metodu çalıştırabiliyoruz.
+		//Params tipinden değişken aldığı için metodların çalıştıracağı kadar parametre yazıyoruz.
+        MessageBox.Show("Şuanki metodun sonucu : " + sonuc.ToString());
+    }
+}
+
+Örnek:
+
+Windows ile bir Ekle butonu ve ürünleri ekleyeceğimiz bir listbox oluşturalım. Butona tıkladıkça ilgili ürünü eklesin. (delegate kullanarak)
+
+Temsilciler.cs isimli bir .cs oluşturalım ve içine delegate'imizi tanımlayalım.
+
+namespace DelegateExamples
+{
+    public delegate void EkleFunc();
+}
+
+Program.cs içine gidelim;
+
+namespace DelegateExamples
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void ekleButton_Click(object sender, EventArgs e)
+        {
+            EkleFunc fonksiyonlar = null;
+            fonksiyonlar += ElmaEkle;
+            fonksiyonlar += PortakalEkle;
+
+            Ekle(fonksiyonlar);
+
+            //EkleFunc fonksiyon = ElmaEkle;
+            //Ekle(fonksiyon);
+
+            //Ekle(ElmaEkle);
+            //Ekle(PortakalEkle);
+        }
+        private void Ekle(EkleFunc ekleFunc)
+        {
+            //ekleFunc();
+            ekleFunc.Invoke();
+
+        }
+
+        private void ElmaEkle()
+        {
+            alinacaklarListBox.Items.Add("Elma");
+        }
+        private void PortakalEkle()
+        {
+            alinacaklarListBox.Items.Add("Portakal");
+        }
+    }
+}
+
+----------------------------------
+
+Anonymous Methods (İsimsiz Metotlar)
+
+- C#’ta bir temsilciye(Delegate) metot bağlarken Anonymous Method yapısını kullanabilir, önceden tanımlanmış bir metoda gereksinim duymadan 
+direkt olarak kod bloğu bağlayabiliriz.
+
+public delegate int Topla(int Sayi1, int Sayi2);
+ 
+static void Main(string[] args)
+{
+    //Lambda
+    Topla t1 = new Topla((a, b) => { return a + b; });
+ 
+    //Lambda
+    Topla t2 = (a, b) => { return a + b; };
+ 
+    //Anonymous Method
+    Topla t3 = delegate (int Sayi1, int Sayi2) //Önceden tanımlanmış bir metodun ismini delegemize belirtme gereksinimi duymadığımız için isimsiz metotdur.
+    {
+        return Sayi1 + Sayi2;
+    };
+ 
+    Console.WriteLine(t1(1, 3));
+    Console.WriteLine(t2(2, 4));
+    Console.WriteLine(t3(3, 5));
+}
+
+- “t1” ve “t2” referanslarında kullanılan yöntem Lambda ifadeleriyle gerçekleştirilmiştir. Anonymous Methods dediğimiz yapı “t3” referansındakidir.
+- “t2” ve “t3” referansındaki kullanımı incelersek eğer delegemizin tipine gerek duymaksızın, kod bloğu oluşturuyor ve ilgili delegemize bağlayabiliyoruz. 
+- Özellikle “t3” referansındaki kullanımda “delegate” anahtar sözcüğü otomatik olarak temsilcinin adının yerini tutmaktadır.
+
+- Aynı mantıkla Anonymous Methods yapılarını Event(Olay)’lar içinde kullanmaktayız.
+
+private void Form1_Load(object sender, EventArgs e)
+{
+    //Lambda
+    btnTikla.Click += (Sender, E) =>
+    {
+ 
+    };
+ 
+    //Anonymous Method
+    btnTikla.Click += delegate (object Sender, EventArgs E)
+    {
+ 
+    };
+}
+
+- Anonymous metotlar, dilin grameri açısından hala desteklensede, kullanım açısından Lambda varken, Anonymous Methods çok tercih edilmemektedir.
+
+------------------------
+
+Event - Olay Kullanımı
+
+- C# içerisinde yer alan event anahtar kelimesi delegate anahtar kelimesi ile tanımlanan bir değişkenin olay olduğunu açıkca belirtmek ve 
+yönetmek için kullanılan anahtar kelimedir. C# programlama dili kullanılarak geliştirilen görsel arayüz uygulamalarında sıklıkla olaylar kullanılır.
+
+- Event anahtar kelimesinde yer alan add ve remove olaya yeni bir metot bağlandığında ve kaldırıldığında tetiklenir.
+
+- Bir buton nesnesine farenin sol tuşuyla tıkladığımızda, bir textbox nesnesine bir karakter girdiğimizde ya da fareyle combobox'daki elemanlardan 
+birini seçtiğimizde bir olay gerçekleşir.İşte bu durumların hepsi bir olaydır.
+
+- Event'ların tipi,kendisine metot bağlayacak delegenin tipinden olur.
+
+- Şimdi formumuza bir Button nesnesi koyalım ve Click Eventına aşağıdaki şekilde ulaşalım.
+
+private void Form1_Load(object sender, EventArgs e)
+{
+    button1.Click += new EventHandler(Tiklandi); //Click olayı Control sınıfı içinde tanımlanmış bir Event'tır.
+}
+
+//O sınıf içerisinde aynı zamanda Click olayının meydana gelip gelmediği de sürekli kontrol edilmektedir.
+
+void Tiklandi(object sender, EventArgs e) //Eğer o sınıf, Click olayının oluştuğunu tespit ederse , ” += ” ile o olaya bağladığımız metot çalıştırılacaktır.
+{
+ 
+}
+
+- Halbuki o sınıf benim Click'e bağladığım bu sınıftaki metottan haberdar olmayacaktır.O sınıfı, bu sınıftaki metottan haberdar etmek için, yani bu sınıftaki
+metodu çalıştırabilmek için yine o sınıfta tanımlı olan delegeyi(EventHandler) kullanıyoruz.
+
+Örnek:
+
+Bir class'taki event'a, başka bir class'taki metodu bağlamak.
+
+class SayiKontrol
+{
+    public delegate void SayiKontrolEtHandler(); 
+	//SayiKontrol sınıfında,geri dönüş tipi olmayan,parametre almayan metodlara uygun SayiKontrolEtHandler adında bir delege yazılmıştır.
+    public event SayiKontrolEtHandler SayiDurumu;
+	//Ve bu delege tipinde,SayiDurumu adında bir event yazılmıştır.
+    int sayi;
+    public int Sayi
+    {
+        get
+        {
+            return sayi;
+        }
+        set
+        {
+            sayi = value;
+            if (sayi<10)
+            {
+                // Olay çalışsın,
+                // SayiKontrolEtHandler delegesinin bağladığı metodu çalıştır dedik.
+            }
+        }
+    }
+}
+
+Kodumuzu güncelleyelim;
+
+class SayiKontrol
+{
+    public delegate void SayiKontrolEtHandler();
+    public event SayiKontrolEtHandler SayiDurumu;
+    int sayi;
+    public int Sayi
+    {
+        get
+        {
+            return sayi;
+        }
+        set
+        {
+            sayi = value;
+            if (sayi < 10)
+            {
+                if (SayiDurumu != null)
+                {
+                    SayiDurumu();
+					//Eğer Sayi propertysine 10 dan küçük bir sayı girilirse SayiDurumu event'ı fırlatılacaktır.
+                }
+            }
+        }
+    }
+}
+
+Şimdi SayiDurumu eventına metot bağlayalım.
+
+private void Form1_Load(object sender, EventArgs e)
+{
+    SayiKontrol nesne = new SayiKontrol();
+    nesne.SayiDurumu += new SayiKontrol.SayiKontrolEtHandler(kontrol);
+	//SayiDurumu eventına ” += ” operatörü vasıtasıyla SayiKontrolEtHandler delegesi üzerinden kontrol metodunu bağladık.
+    nesne.Sayi = 77;
+}
+void kontrol()
+{
+    MessageBox.Show("Sayi özelliği 10 dan küçük olamaz");
+}
+
+- Eğer bu programı çalıştırırsanız kontrol metodu çalıştırılmayacaktır. Çünkü, SayiDurumu event'ına SayiKontrolEtHandler delegesi üzerinden kontrol metot 
+bağlanıyor ve Sayi özelliğine 77 rakamı set edildiğinde,classtaki sayi fieldına gelen değerin 10 dan küçük olmadığını bildiği için if scopeları içine girmeden akışı durduruyor.Yani SayiDurumu eventı şu durumdayken atılmıyor.Eğer 10 dan küçük değer girersek kontrol metodu çalışacaktır.

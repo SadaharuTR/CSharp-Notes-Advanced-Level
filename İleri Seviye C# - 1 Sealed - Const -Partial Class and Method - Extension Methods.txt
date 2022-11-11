@@ -1,0 +1,301 @@
+Sealed Anahtar Kelimesi (Keyword)
+
+- Class'larda, proplarda ve metotlarda kullanılabilirler.
+
+- eğer ki bir class'ta kullanırsak o class'ta inheritance işlemini gerçekleştiremeyiz.
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //
+        }
+    }
+
+    sealed class A {  }
+
+    class B : A {  }//hata.
+}
+
+- Eğer ki String'in class'ına bakarsak onun da sealed olarak tanımlandığını görürüz. Yani String sınıfından kalıtım alamyız.
+
+class MyClass : String //hata verecektir.
+{
+
+}
+
+Metotlardaki kullanımı;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Aynısı property'ler için de geçerlidir.
+        }
+    }
+
+    class A
+    {
+        public virtual void deneme()
+        {
+            Console.WriteLine("A-Deneme");
+        }
+    }
+
+    class B : A
+    {
+        public sealed override void deneme()
+        {
+            Console.WriteLine("B-Deneme");
+        }
+    }
+    class C : B
+    {
+        public override void deneme() //yukarıda Sealed ile işaretlendiği için override işlemi yapılamaz hatası alınır.
+        {
+            Console.WriteLine("C-Deneme");
+        }
+    }
+}
+
+--------------------
+
+Const Anahtar Kelimesi 
+
+- const ile tanımlanan değişkenler artık değiştirilemez.
+
+namespace ConstKeyword
+{
+     class Program
+    {
+        const double PI = 3.14;
+        static void Main(string[] args)
+        {
+            Console.WriteLine(PI);
+
+            PI = 2.72; //hata verir. Const ile sabit bir değer olarak yukarıda belirledik. 
+        }
+    }
+}
+
+-------------------
+
+Partial Class Nedir?
+
+- Bir class'ın parçalarının fiziksel olarak farklı dosyalarda tutulduğu mantığa denir.
+
+- Partial class ile fiziksel olarak parça class'ların birleşmesi için class isimlerinin aynı olması gerekmektedir.
+
+- PartialClass isimli projemizi oluşturalım.
+
+Örnek:
+
+Product.cs
+
+namespace PartialClass
+{
+    public partial class Product //başına partial getirerek bir class'ı partial yapabiliriz.
+    {
+        public int Id { get; set; }
+    }
+}
+
+- Product_Partial.cs isimli Class'ımızı projeye ekleyelim.
+
+namespace PartialClass
+{
+    public partial class Product //iki farklı cs içerisinde aynı class'ı iki kere oluşturduk.
+    {
+        //eğer partial yazmasaydık aynı isimde class mevcut hatası alacaktık.
+
+        public string Name { get; set; }
+    }
+}
+
+- Program.cs dosyamızdan class'lara eriştiğimizde,
+
+namespace PartialClass
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Product p = new Product();
+
+            //oluşturmuş olduğumuz p nesnesi ile p. yazdığımızda Id ve Name'in ikisinin de geldiğini görürüz.
+			p.Name = "...";
+            p.Id = 1;
+        }
+    }
+}
+
+------------------
+
+Partial Method Yapıları
+
+- C#’ta, “partial” keywordü aracılığıyla class yapılarında “partial class” üretebilmekteyiz. 
+
+- “partial” keywordü kullanılabildiği yapılarda parçaları birleştirme işlevi güden ve farklı dosyaların bir bütün olarak çalışabilmesini sağlayan bir 
+modifier(nitelendirici)dir. Haliyle bu keywordü classlar üzerinde kullanırsak class parçalarını birleştirecektir. Yok eğer metotlar üzerinde kullanırsakta 
+metot parçasını bütünsel olarak görecektir.
+
+- Partial metotlar partial classlar içine tanımlanabilirler.
+- Aynı classlarda olduğu gibi partial metot yapılarının ikisininde “partial” keywordüyle işaretlenmesi gerekmektedir.
+- Partial metotlardan biri tanım, bir diğeride gövde olmak zorundadır.
+
+partial class OrnekSinif
+{
+    //Tanım
+    partial void X();
+    //Gövde
+    partial void X()
+    {
+ 
+    }
+}
+
+- Partial metotların geri dönüş tipi her zaman void olmalıdır.
+- Partial metotlar out parametreler alamazlar lakin ref parametreleri alabilirler.
+
+partial class OrnekSinif
+{
+    partial void X(ref int x);
+    partial void X(ref int x)
+    {
+ 
+    }
+}
+
+- Partial metotlar extern ve virtual olamazlar.
+- Partial metotlar static yahut generic olabilirler.
+- Partial metotlar erişim belirleyicileri almazlar. Yani bir nevi her daim private erişim belirleyicisine sahiptirler.
+- Partial metotlar delegate ile temsil edilemezler. Bunun sebebi birazdan da göreceğimiz üzere partial metotların çalışma zamanında(Run Time) var olacağı kesin değildir.
+Yukarıdaki maddelerden birinde bahsetmiş olduğumuz tanım ve gövde ikilisinde aslında tanımdan kastım declaration(beyanname), gövdeden ise implementation(uygulama)dır.
+
+- Partial metotlarda asıl maksat, bir metotun declaration’ının bir dosyada, implementation’ının başka bir dosyada durmasını sağlamaktır. 
+Bu açıdan bakınca partial metodları, partial classlarda kullanmak daha elverişlidir.
+
+partial class OrnekSinif
+{
+    //Declaration
+    partial void X(ref int x);
+}
+ 
+partial class OrnekSinif
+{
+    //Implementation
+    partial void X(ref int x)
+    {
+ 
+    }
+}
+
+- Eğer ki declaration bir partial metodun implementation’ını oluşturmazsanız hata almazsınız. Bu demek oluyor ki, uygulanmamış bir partial metot derleme 
+sırasında yok sayılmaktadır. İşte bu yüzden yukarıda son madde olarak belirttiğim gibi delegate yapılarınca ilgili metot temsil edilmemektedir.
+
+-----------------------
+
+Extension Methods
+
+- Genişletme metodları bir tip (integer veya string vb.) üzerinde herhangi bir değişiklik yapmadan o tipi kolayca genişletmemize olanak sağlayan bir yapıdır. 
+Daha basit olarak anlatacak olursak tanımladığımız bu Genişletme Metodları özünde bildiğimiz static metodlardır.
+
+Genişleme metodu oluşturma;
+
+- Public static bir sınıf oluşturulur.
+- Yapmak istediğiniz işlemleri gerçekleştirecek metod yazılır.
+- Fonksiyon genişleme metoduna dönüştürülür.
+
+Örnek:
+
+namespace ExtensionMethods;
+
+class Program
+{
+    static void Main()
+    {
+        char[] dizi = "Merhaba".KarakterlereCevir();
+
+        foreach (var item in dizi)
+        { 
+            Console.WriteLine(item); 
+        }
+    }
+}
+
+//Extension Metotların static class'larda olması şarttır.
+static class Extensions
+{
+    //static class'ların özelliğinden gereği tüm üyeleri de static olmak zorundadır.
+
+    public static char[] KarakterlereCevir(this string text) 
+    {
+        char[] chars = new char[text.Length];
+
+        for (int i = 0; i < chars.Length; i++)
+        {
+            chars[i] = text[i];
+        }
+        return chars;
+    }
+}
+
+Çıktı: (alt alta m e r h a b a yazdırır.
+
+Not: Eğer bir tip için var olan öz metodlar ile aynı isimde extension metod oluşturursanız, derleyici (compiler) metod çağırımında yazmış olduğunuz 
+extension metodu değil öz metodu çalıştıracaktır. Extension metodlar sadece aynı isimde öz metod olmadığı zaman çalışırlar.
+
+Not: Object tipine tanımladığınız bir extension metod, sadece String, Integer ve List’ler için kısıtlı kalmayıp .Net Framework içerisindeki her tip için 
+geçerli olacaktır.
+
+Örnek:
+
+namespace ExtensionMethods;
+
+class Program
+{
+    static void Main()
+    {
+        string x = "45";
+        int y = 9;
+
+        Console.WriteLine(x.TamSayiyaCevir()+y);
+    }
+}
+static class Extensions
+{
+    public static int TamSayiyaCevir(this object obj)
+    {
+        return Convert.ToInt32(obj);
+    }
+}
+
+Çıktı:
+54
+
+Örnek:
+
+namespace ExtensionMethods;
+class Program
+{
+    static void Main()
+    {
+        string x = "Selam".Ekle("XYZ");
+        Console.WriteLine(x);
+    }
+}
+static class Extensions
+{
+    public static string Ekle(this object obj, string yazi) //thisobject obj'den sonra ikinci yazılan string yazi'yı normal parametre olarak alacaktır.
+    {
+        return obj + yazi;
+    }
+}
+
+Çıktı:
+SelamXYZ
+

@@ -1,0 +1,290 @@
+Attributes (Nitelikler)
+
+- Nitelikler, uygulandıkları class'lar, metotlar, structure'lar, enumerator'lar veya asslembly'ler gibi programımızın parçalarının çalışma zamanındaki
+davranışların değiştirilmesine olana sağlayan sınıflardır.
+
+- Attribute, abstract bir sınıftır. Dolayısıyla örneklenemez ancak bir nitelik sınıfının içermesi gereken temel üyeleri barındırır.
+
+- .Net içinde mevcut olan veya bizim tarafımızdan geliştiilen  nitelikler daima Attribute sınıfından türemek zorundadır.
+
+- Bu metadata bilgileri üretilen assembly'ler içerisinde yer alır ve yansıma(Reflection) teknikleri ile çalışma zamanında değerlendirilebilir.
+
+-Aslında niteliklerin belkide en önemli özelliği, üretilen assembly içerisinde yer alan tip ve üyelere ekstra bilgiler katabilmeleridir. 
+Bir başka deyişle metadata içerisine ilave bilgiler eklenebilmesini sağlamaktadır.
+
+.Net Framework'te nitelikleri iki tip sağlar;
+
+- Pre-defined attributes (önceden tanımlanmış nitelikler)
+	-AttributeUsage
+	-Conditional
+	-Obsolete
+	
+- custom build attributes (özel yapılmış nitelikler)
+
+- Nitelikler [...] karakterleri arasında çağrılır.
+
+[attribute(positional_parameters, name_parameter = value, ...] 
+element
+
+element: bir class, metot, structure, enumerator veya assembly olabilir.
+
+Positional_parameters gerekli bilgileri belirtir ve name_parameter istediği bilgileri belirtir.
+
+- C#’ta bir Attribute tanımlarken ilgili class’a Attribute olduğunu bildirmek için “Attribute” sınıfından türetmemiz ve ardından “AttributeUsage” 
+Attribute’u ile hangi elemanlar üzerinde çalıştırılabileceğini belirtmemiz yeterlidir.
+
+Örnek:
+
+[System.AttributeUsage(AttributeTargets.Method)] //AttributeUsage özniteliği sayesinde bu özniteliğin sadece metotlarda çalışacağını belirttik.
+class KontrolAttribute : Attribute //KontrolAttribute sınıfını öznitelik olarak kullanabilmek için "Attribute" sınıfından türettik.
+{
+    public KontrolAttribute()
+    {
+        Console.WriteLine("Kontrol Attribute tetiklenmiştir." );
+    }
+}
+
+class OrnekClass
+{
+    [Kontrol()]
+    public void OrnekMetod()
+    {
+	//öznitelik sınıfımız Attribute sınıfından türetildiği için “classname[Attribute]” şeklinde tanımlansada bir öznitelik olduğu için çağrıldığı 
+	//yerde classname’i yazmamız yeterlidir.
+    }
+}
+
+-------------
+
+Property’e Özel Attribute
+
+Örnek:
+
+namespace AttibutesNitelikler
+{
+    class Program //Property'e özel Attribute
+    {
+        static void Main(string[] args)
+        {
+            AlisVeris alisVeris = new AlisVeris(150);
+            AlisVeris alisVeris2 = new AlisVeris(10);
+            Console.Read();
+        }
+    }
+    //“KontrolAttribute” sınıfını öznitelik olarak kullanabilmek için “Attribute” sınıfından türettik ve “AttributeUsage” özniteliği sayesinde
+    //bu özniteliğin sadece Property'lerde çalışacağını belirttik.
+    [AttributeUsage(AttributeTargets.Property)]
+    class KontrolAttribute : Attribute
+    {
+        public int Para { get; set; }
+    }
+
+    //Özniteliği kullanacağımız propertynin bulunduğu sınıfı inşa edelim.
+    class AlisVeris
+    {
+        public AlisVeris(int Fiyat) //propertyi kullanacağımız sınıfın constructerında bu sınıfa bağlı propertylere tanımlanmış tüm attributeları tetiklemekteyiz.
+        {
+            this.Fiyat = Fiyat;
+            foreach (var property in typeof(AlisVeris).GetProperties())
+            {
+                foreach (var attr in property.GetCustomAttributes(false))
+                {
+                    if (property.Name == "Fiyat")
+                    {
+                        KontrolAttribute kontrolAttribute = (KontrolAttribute)attr;
+                        if ((int)property.GetValue(this) > kontrolAttribute.Para)
+                            Console.WriteLine("Alışveriş yapıldı.");
+                        else
+                            Console.WriteLine("Para eksik");
+                    }
+                }
+            }
+        }
+
+        //Fiyat propertysinin Kontrol Attribute’una verilen değer ile kıyaslaması yapılmaktadır.
+        [Kontrol(Para = 100)]
+        public int Fiyat { get; set; }
+    }
+}
+
+---------------------
+
+Metotlara Özel Attribute
+
+Örnek:
+
+namespace AttibutesNitelikler;
+
+class Program //Metotlar ile Attribute
+{
+    static void Main(string[] args)
+    {
+        //AlisVeris sınıfından aşağıdaki gibi nesne ürettiğimizde ise,
+        AlisVeris alisVeris = new AlisVeris(true);
+        AlisVeris alisVeris2 = new AlisVeris(false);
+        Console.Read();
+    }
+}
+
+[AttributeUsage(AttributeTargets.Method)]
+class KontrolAttribute : Attribute
+{
+    public void Durum(bool Durum)
+    {
+        if (Durum)
+            Console.WriteLine("Kontrol tamamlandı...");
+        else
+            Console.WriteLine("Kontrol ediliyor...");
+    }
+}
+//İlgili özniteliği kullanacak metodu barındıran sınıfımızı inşa edelim.
+class AlisVeris
+{
+    //ilgili sınıfın tipinde bulunan metodlara bağlı attributelar tetiklenmekte ve basit bir algoritmik işlem gerçekleştirilmektedir.
+    public AlisVeris(bool Durum)
+    {
+        foreach (var method in typeof(AlisVeris).GetMethods())
+        {
+            foreach (var attr in method.GetCustomAttributes(false))
+            {
+                if (method.Name == "AlisVerisYap")
+                {
+                    KontrolAttribute kontrolAttribute = (KontrolAttribute)attr;
+                    kontrolAttribute.Durum(Durum);
+                    AlisVerisYap(Durum);
+                }
+            }
+        }
+    }
+
+    [Kontrol]
+    public void AlisVerisYap(bool Durum)
+    {
+        if (Durum)
+            Console.WriteLine("Alış veriş yapıldı.");
+        else
+            Console.WriteLine("Alış veriş yapılamadı");
+    }
+}
+
+---------------------
+
+AllowMultiple Özelliği
+
+- AllowMultiple özelliği ile oluşturulacak Attribute’un çoklu kullanım iznini ayarlayabilmekteyiz.
+
+[Kontrol]
+[Kontrol] //hata verir.
+
+class OrnekClass
+{  	}
+
+[AttributeUsage(AttributeTargets.All)]
+
+class KontrolAttribute : Attribute
+{	}
+
+- AllowMultiple özelliği varsayılan olarak false değerine sahiptir.
+
+[Kontrol]
+[Kontrol] //hata ortadan kalkar..
+
+class OrnekClass
+{  	}
+
+[AttributeUsage(AttributeTargets.All, AllowMultiple = true)] //AllowMultiple = true yaparsak aynı yapı üzerinde birden fazla kullanım sağlarız.
+
+class KontrolAttribute : Attribute
+{	}
+
+-------------------
+
+Inherited Özelliği
+
+- Bu özellik sayesinde oluşturduğumuz Attribute ile işaretlenen sınıflardan kalıtım alan başka sınıfların örneklendirmesinde Attribute’un 
+işlevselliğini ayarlamaktayız. Varsayılan olarak true değerine sahiptir.
+
+[AttributeUsage(AttributeTargets.All, Inherited = false)]
+class KontrolAttribute : Attribute
+{
+    public void Metod()
+    {
+        Console.WriteLine("Attribute tetiklendi.");
+    }
+}
+
+-Eğer ki, Inherited özelliğine yukarıdaki gibi false değerini verip aşağıdaki gibi Kontrol özniteliğiyle işaretlenmiş sınıftan kalıtım alan sınıfın 
+nesnesini alırsak artık bu öznitelik Derived Class’ta gerçeli olmayacaktır.
+
+class OrnekClass2 : OrnekClass
+{
+ 
+}
+ 
+[Kontrol]
+class OrnekClass
+{
+ 
+}
+
+- Şimdi OrnekClass2 nesnesi yaratır ve ilgili tipe bağlı attribute var mı yok mu kontrol edersek eğer,
+
+static void Main (string [] args)
+{
+	OrnekClass2 o = new OrnekClass2();
+	typeof(OrnekClass2).GetCustomAttributes().First() as KontrolAttribute).Metod();
+}
+
+//InvalidOperationException was unhandled hatası alırız. ÇÜnkü
+//Inherited özelliğine false değer vererek kalıtsal durumlarda özniteliklerin işlevselliğini pasifize etmiş olduk.
+
+-------------------
+
+C# 11 İle Gelen Generic Attribute Yapılanması
+
+- C# 11 öncesi sürümlerde, attribute’ların generic olabilmesi desteklenmediğinden dolayı, bu özellikle pratik bir şekilde çözüm getirilebilecek 
+senaryolarda farklı ve zahmetli yaklaşımlara yöneliyorduk.
+
+- Eskiden attribute’lar da tür işlemleri gerçekleştirirken ‘Type’ türünden aşağıdaki gibi istifade ederek işlemlerimizi gerçekleştiriyorduk.
+
+class TypeAttribute : Attribute 
+{
+	//‘TypeAttribute’ isimli attribute’un içerisinde bir tür tanımlaması yapabilmek için ‘Type’ türünden bir referans tutmaktayız. 
+    public Type Type { get; }
+    public TypeAttribute(Type type)
+        => Type = type;
+}
+
+[Type(typeof(int))] //Bu referans üzerinden yapılacak operasyon için gerekli tür tanımlaması
+class MyClass { }
+
+- Artık generic attributes özelliği sayesinde artık attribute tanımlamalarında aşağıdaki gibi generic tanımlamada bulunabiliyor ve 
+böylece yapıyı komple generic hale getirebiliyoruz.
+
+class TypeAttribute<T> : Attribute
+{
+ 
+}
+
+[Type<int>()]
+class MyClass { }
+
+- Tabi bu özelliğinde belirli sınırlamaları mevcuttur. Misal olarak generic sınıflarda, generic attribute’ları kullanırken akla gelebileceği 
+gibi direkt olarak generic parametreleri kullanamamaktayız.
+
+class MyClass<T>
+{
+	[Type<T>()] //hata verir. Generic parametre almaz.
+	
+	public int MyProperty { get; set; }
+}
+
+- Ayrıca generic attribute’lar da aşağıdaki türler desteklenmemektedir;
+
+- dynamic, nint, nuint, string? 
+(Burada int?, float? gibi primitive olan türlerin nullable’larının desteklendiğini unutmayınız!)
+- (int a, int b) (Tuple)
+
+- Bunların yerine sırasıyla aşağıdaki türleri kullanabilirsiniz;
+
+object, IntPtr, UIntPtr, string, ValueTuple<int, int>
